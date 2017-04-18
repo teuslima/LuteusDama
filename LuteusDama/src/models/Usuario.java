@@ -1,11 +1,11 @@
 package models;
 
-public class Usuario {
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
+public class Usuario extends Pessoa{
     
     // Atributos
-    private int id;
-    private String nome;
-    private String email;
     private String senha;
     private int vitorias;
     private int derrotas;
@@ -14,40 +14,13 @@ public class Usuario {
     public Usuario() {
     }
     
-    public Usuario(int id, String nome, String email, String senha, int vitorias, int derrotas) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
+    public Usuario(String nome, String email, String senha) {
         this.senha = senha;
-        this.vitorias = vitorias;
-        this.derrotas = derrotas;
+        this.vitorias = vitorias = 0;
+        this.derrotas = derrotas = 0;
     }
     
     // Métodos 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getSenha() {
         return senha;
     }
@@ -70,7 +43,15 @@ public class Usuario {
 
     public void setDerrotas(int derrotas) {
         this.derrotas = derrotas;
-    } 
+    }
     
-    
+    public void insertAll(String nome, String email, String senha) throws SQLException{
+        this.setNome(nome);
+        this.setEmail(email);
+        this.setSenha(senha);
+        
+        UsuarioDAO ud = new UsuarioDAO();
+        ud.conecta(this.getNome(), this.getEmail(), this.getSenha(), this.getVitorias(), this.getDerrotas());
+        JOptionPane.showMessageDialog(null, "Cadastro realizado");
+    }
 }

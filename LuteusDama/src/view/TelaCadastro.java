@@ -6,6 +6,13 @@
 package view;
 
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.Usuario;
+//import java.lang.Class;
+//import java.lang.reflect.Constructor;
+//import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +26,14 @@ public class TelaCadastro extends javax.swing.JFrame {
     public TelaCadastro() {
         initComponents();
         setIcon();
+        setLocationRelativeTo(null);
     }
+    
+//    public TelaCadastro(TelaLogin inicio) {
+//        initComponents();
+//        setIcon();
+//        setLocationRelativeTo(null);
+//    }   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,6 +95,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         lblSenha1.setText("Nome");
 
         btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PainelConteudoLayout = new javax.swing.GroupLayout(PainelConteudo);
         PainelConteudo.setLayout(PainelConteudoLayout);
@@ -170,6 +189,23 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void jtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfEmailActionPerformed
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        String nome = jtfNome.getText();
+        String email = jtfEmail.getText();
+        String senha = jtfSenha.getText();
+        
+        Usuario novo = new Usuario();
+        try {
+            novo.insertAll(nome, email, senha);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jtfNome.setText("");
+        jtfEmail.setText("");
+        jtfSenha.setText("");
+        
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
