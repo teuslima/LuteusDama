@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UsuarioDAO{
-    public void conecta(String nome, String email, String senha, int vitorias, int derrotas) throws SQLException{
+    public void conecta(Usuario novo) throws SQLException{
         String driver = "org.mariadb.jdbc.Driver";
 
         Connection conexao;
@@ -21,8 +21,9 @@ public class UsuarioDAO{
             conexao = DriverManager.getConnection("jdbc:mysql://localhost/jogoDama", "root", "97449077");
             statement = conexao.createStatement();
             resultset = statement.executeQuery("INSERT INTO dadosUser(nome, email, senha, vitorias, derrotas)"
-                    + " VALUES('"+nome+"', '"+email+"', '"+senha+"', "+vitorias+", "+derrotas+");");
-        
+                    + " VALUES('"+novo.getNome()+"', '"+novo.getEmail()+"', '"+novo.getSenha()+"', "+novo.getVitorias()+", "+novo.getDerrotas()+");");
+            
+            conexao.close();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

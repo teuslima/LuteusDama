@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.Usuario;
+import models.UsuarioController;
 //import java.lang.Class;
 //import java.lang.reflect.Constructor;
 //import javax.swing.JOptionPane;
@@ -195,12 +196,13 @@ public class TelaCadastro extends javax.swing.JFrame {
         String email = jtfEmail.getText();
         String senha = jtfSenha.getText();
         
-        Usuario novo = new Usuario();
+        UsuarioController uc = new UsuarioController();
         try {
-            novo.insertAll(nome, email, senha);
+            uc.insere(nome, email, senha);
         } catch (SQLException ex) {
             Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         jtfNome.setText("");
         jtfEmail.setText("");
         jtfSenha.setText("");

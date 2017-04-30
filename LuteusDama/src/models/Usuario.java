@@ -1,7 +1,6 @@
 package models;
 
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 public class Usuario extends Pessoa{
     
@@ -44,14 +43,4 @@ public class Usuario extends Pessoa{
     public void setDerrotas(int derrotas) {
         this.derrotas = derrotas;
     }
-    
-    public void insertAll(String nome, String email, String senha) throws SQLException{
-        this.setNome(nome);
-        this.setEmail(email);
-        this.setSenha(senha);
-        
-        UsuarioDAO ud = new UsuarioDAO();
-        ud.conecta(this.getNome(), this.getEmail(), this.getSenha(), this.getVitorias(), this.getDerrotas());
-        JOptionPane.showMessageDialog(null, "Cadastro realizado");
-    }
-}
+ }
