@@ -9,7 +9,6 @@ import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import models.Usuario;
 import models.UsuarioController;
 //import java.lang.Class;
 //import java.lang.reflect.Constructor;
