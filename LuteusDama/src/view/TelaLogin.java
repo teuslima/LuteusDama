@@ -211,7 +211,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }
     
     private void setIcon(){
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icone.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("iconNovoo.png")));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
