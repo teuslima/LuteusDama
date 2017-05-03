@@ -1,6 +1,5 @@
 package luteusdama;
-
-import view.TelaLogin;
+import view.StartGUI;
 
 /**
  * @author Luan M. Costa
@@ -9,10 +8,7 @@ public class LuteusDama {
 
     public static void main(String[] args) {
         
-        TelaLogin tl = new TelaLogin();
-        tl.setTitle("Login - Luteus");
-        tl.setVisible(true);
-        
+        StartGUI start = new StartGUI();
+        start.setVisible(true);
     }
-    
 }
